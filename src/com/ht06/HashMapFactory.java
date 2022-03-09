@@ -1,4 +1,12 @@
 package com.ht06;
+/**
+ * Ultima modificacion: 9/03/2022
+ * 
+ * Facotry de los hashmap
+ * @file Main.java
+ * @author Montserrat Gil
+ * @author Guillermo Santos
+ */
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -17,7 +25,7 @@ public class HashMapFactory<K,V> {
      * @return
      * @throws Exception
      */
-    public Map getMap(String option) throws Exception {
+    public Map<K, V> getMap(String option) throws Exception {
         if (option.equals("HM")) {
             return new HashMap<K, V>(); // HashMap
         } else if (option.equals("LM")) {
