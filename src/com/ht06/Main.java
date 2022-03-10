@@ -66,6 +66,7 @@ public class Main {
                 //mostrar cartas en coleccion
                 System.out.println(Controller.printMapa(coleccion));
 
+
             } else if (salir.equals("4")){
                 //mostrar cartas en coleccion ordenadas por tipo
                 System.out.println(Controller.printMapaOrdenado(coleccion));
@@ -73,6 +74,12 @@ public class Main {
             } else if (salir.equals("5")){
                 //mostrar todas las cartas existentes
                 System.out.println(Controller.printMapa(cartas));
+                for (int i = 0; i<5; i++){
+                    String t = Controller.printMapa(cartas);
+                    System.out.println(t.substring(t.length()-23,t.length()-1));
+                }
+
+
 
             } else if (salir.equals("6")){
                 //mostrar todas las cartas existentes por tipo

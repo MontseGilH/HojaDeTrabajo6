@@ -45,21 +45,21 @@ public class Controller {
      * @return
      */
     public static String printMapa(Map<String,String> mapa){
-        String s;
+        String s="";
         if (mapa.isEmpty()){
             s="\nCollecion vacia";
         } else {
             s="\nCartas en la coleccion";
         }
+
         long TInicio, TFin, tiempo;           //Para determinar el tiempo
         TInicio = System.currentTimeMillis(); //de ejecución
-
         for (String carta: mapa.keySet()){
             s = s + "\n Nombre: "+carta +", Tipo: "+mapa.get(carta);
         }
         TFin = System.currentTimeMillis();
         tiempo = TFin - TInicio;
-        s+="\nTiempo de corrida "+tiempo;
+        s+="\nTiempo de corrida: "+tiempo;
 
         return s;
     }
