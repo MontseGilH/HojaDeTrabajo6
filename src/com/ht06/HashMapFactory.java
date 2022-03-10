@@ -1,13 +1,4 @@
 package com.ht06;
-/**
- * Ultima modificacion: 9/03/2022
- * 
- * Facotry de los hashmap
- * @file Main.java
- * @author Montserrat Gil
- * @author Guillermo Santos
- */
-
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -17,6 +8,9 @@ import java.util.TreeMap;
  * The Hash Map Factory creates different implementations of a Java Map.
  * @param <K> Type for the key
  * @param <V> Type for the value
+ * @file HashMapFactory.java
+ * @author Montserrat Gil
+ * @author Guillermo Santos
  */
 public class HashMapFactory<K,V> {
     /**
@@ -26,11 +20,11 @@ public class HashMapFactory<K,V> {
      * @throws Exception
      */
     public Map<K, V> getMap(String option) throws Exception {
-        if (option.equals("HM")) {
+        if (option.equalsIgnoreCase("HM")) {
             return new HashMap<K, V>(); // HashMap
-        } else if (option.equals("LM")) {
+        } else if (option.equalsIgnoreCase("LM")) {
             return new LinkedHashMap<K,V>();    // LinkedHashMap
-        } else if(option.equals("TM")) {
+        } else if(option.equalsIgnoreCase("TM")) {
             return new TreeMap<K,V>();  // TreeMap
         } else {
             throw new Exception("El tipo de Mapa seleccionado no es valido.");  // Throw error message
