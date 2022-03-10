@@ -55,7 +55,7 @@ public class Main {
             } else if (salir.equals("2")){
                 //mostrar tipo de una carta especifica
                 System.out.println("\nIngrese el nombre de la carta para saber el tipo");
-                String nombreC = scan.next();
+                String nombreC = scan.nextLine();
                 try{
                     System.out.println("Tipo de "+nombreC+": "+Controller.obtenerTipo(nombreC,cartas));
                 } catch (Exception e){
@@ -68,6 +68,7 @@ public class Main {
 
             } else if (salir.equals("4")){
                 //mostrar cartas en coleccion ordenadas por tipo
+                System.out.println(Controller.printMapaOrdenado(coleccion));
 
             } else if (salir.equals("5")){
                 //mostrar todas las cartas existentes

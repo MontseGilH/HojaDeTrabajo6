@@ -19,7 +19,6 @@ public class Controller {
      * @throws Exception
      */
     public static String obtenerTipo(String key,Map<String,String> map) throws Exception{
-        System.out.println("Obteniendo " +key);
         String carta =map.get(key);
         if (carta==null){
             throw new Exception("Error carta no esta en las existentes");
@@ -52,9 +51,16 @@ public class Controller {
         } else {
             s="\nCartas en la coleccion";
         }
+        long TInicio, TFin, tiempo;           //Para determinar el tiempo
+        TInicio = System.currentTimeMillis(); //de ejecución
+
         for (String carta: mapa.keySet()){
             s = s + "\n Nombre: "+carta +", Tipo: "+mapa.get(carta);
         }
+        TFin = System.currentTimeMillis();
+        tiempo = TFin - TInicio;
+        s+="\nTiempo de corrida "+tiempo;
+
         return s;
     }
 
@@ -66,6 +72,8 @@ public class Controller {
      */
     public static String printMapaOrdenado(Map<String,String> mapa){
         String s = "";  // String to be returned
+        long TInicio, TFin, tiempo;           //Para determinar el tiempo
+        TInicio = System.currentTimeMillis(); //de ejecución
         // Logic to compare two entries
         Comparator<Map.Entry> compareByKeyType = new Comparator<Map.Entry>() {
             @Override
@@ -89,7 +97,9 @@ public class Controller {
             s = s + "\n Nombre: "+entry.getKey() +", Tipo: "+ entry.getValue();
         }
 
-
+        TFin = System.currentTimeMillis();
+        tiempo = TFin - TInicio;
+        s+="\nTiempo de corrida "+tiempo;
 
         return s;
     }
