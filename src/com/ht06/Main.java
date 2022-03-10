@@ -29,7 +29,7 @@ public class Main {
             String implementacion = scan.nextLine();
             try{
                 coleccion = hashF.getMap(implementacion);
-                cartas = FileManager.leerArchivo(implementacion,"");
+                cartas = FileManager.leerArchivo(implementacion,"cards_desc.txt");
                 opC = true;
             } catch (Exception e) {
                 System.out.println(e.getMessage()+"\n");
