@@ -83,13 +83,11 @@ public class Controller {
         } else {
             s="\nCartas en la coleccion";
         }
-        // Itterate and append to the entry
+        // Iterate and append to the entry
         for (Map.Entry entry:
              sortedEntries) {
             s = s + "\n Nombre: "+entry.getKey() +", Tipo: "+ entry.getValue();
         }
-
-
 
         return s;
     }
