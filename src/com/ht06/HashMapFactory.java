@@ -13,6 +13,7 @@ import java.util.TreeMap;
  * @author Guillermo Santos
  */
 public class HashMapFactory<K,V> {
+
     /**
      * Creates a Map with a different implementation depending on the option parameter.
      * @param option Type of Map to return. (HM -> HashMap) (LM -> LinkedHashMap) (TM -> TreeMap)

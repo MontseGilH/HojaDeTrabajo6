@@ -20,8 +20,8 @@ public class Main {
 
         //crear coleccion de cartas
         HashMapFactory<String,String> hashF = new HashMapFactory<String,String>();
-        Map<String,String> coleccion;
-        Map<String, String> cartas;
+        Map<String,String> coleccion=null;
+        Map<String, String> cartas=null;
 
         //seleccionar implementacion
         while (!opC){
@@ -32,7 +32,7 @@ public class Main {
                 cartas = FileManager.leerArchivo(implementacion,"");
                 opC = true;
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println(e.getMessage()+"\n");
             }
         }
 
@@ -43,18 +43,35 @@ public class Main {
             salir = scan.nextLine();
             if (salir.equals("1")){
                 //agregar carta a coleccion
+                System.out.println("\nIngrese el nombre de la carta a agregar");
+                String nombreC = scan.next();
+                try{
+                    coleccion=Controller.agregarCarta(nombreC,cartas,coleccion);
+                    System.out.println("Carta agregada\n");
+                } catch (Exception e){
+                    System.out.println(e.getMessage()+"\n");
+                }
 
             } else if (salir.equals("2")){
                 //mostrar tipo de una carta especifica
+                System.out.println("\nIngrese el nombre de la carta para saber el tipo");
+                String nombreC = scan.next();
+                try{
+                    System.out.println("Tipo de "+nombreC+": "+Controller.obtenerTipo(nombreC,cartas));
+                } catch (Exception e){
+                    System.out.println(e.getMessage()+"\n");
+                }
 
             } else if (salir.equals("3")){
                 //mostrar cartas en coleccion
+                System.out.println(Controller.printMapa(coleccion));
 
             } else if (salir.equals("4")){
                 //mostrar cartas en coleccion ordenadas por tipo
 
             } else if (salir.equals("5")){
                 //mostrar todas las cartas existentes
+                System.out.println(Controller.printMapa(cartas));
 
             } else if (salir.equals("6")){
                 //mostrar todas las cartas existentes por tipo

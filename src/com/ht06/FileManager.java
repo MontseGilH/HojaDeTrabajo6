@@ -13,10 +13,15 @@ import java.util.Map;
  */
 
 
-
-
 public class FileManager {
 
+    /**
+     * Lee un archivo y devuelve el mapa con el contenido del mismo
+     * @param tipoHash implementacion del hash que se quiere
+     * @param archivo direccion del archivo
+     * @return mapa
+     * @throws Exception
+     */
     public static Map<String, String> leerArchivo(String tipoHash, String archivo) throws Exception{
         HashMapFactory<String, String> hashF = new HashMapFactory<String,String>();
         Map<String, String> hash = hashF.getMap(tipoHash);
