@@ -91,16 +91,19 @@ public class Controller {
         } else {
             s="\nCartas en la coleccion";
         }
-        // Itterate and append to the entry
+        // Iterate and append to the entry
         for (Map.Entry entry:
              sortedEntries) {
             s = s + "\n Nombre: "+entry.getKey() +", Tipo: "+ entry.getValue();
         }
 
+<<<<<<< HEAD
         TFin = System.currentTimeMillis();
         tiempo = TFin - TInicio;
         s+="\nTiempo de corrida "+tiempo;
 
+=======
+>>>>>>> 7be2ce162b0b2661712ccc6130be3c612c16aa73
         return s;
     }
 
