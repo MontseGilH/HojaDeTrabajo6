@@ -44,22 +44,29 @@ public class Controller {
      * @param mapa del que se quiere saber los objetos
      * @return
      */
-    public static String printMapa(Map<String,String> mapa){
+    public static String printMapa(Map<String,String> mapa,boolean imprimirMapa){
         String s="";
         if (mapa.isEmpty()){
             s="\nCollecion vacia";
         } else {
-            s="\nCartas en la coleccion";
+            if (imprimirMapa){
+                s="\nCartas en la coleccion";
+                for (String carta: mapa.keySet()){
+                    s = s + "\n Nombre: "+carta +", Tipo: "+mapa.get(carta);
+                }
+            } else {
+                s="\nTiempo de corrida promedio: ";
+                long tiempo=0;
+                for (int i=0;i<20;i++){
+                    long t1 = System.nanoTime();
+                    for (String carta: mapa.keySet()){
+                        mapa.get(carta);
+                    }
+                    tiempo+=System.nanoTime()-t1;
+                }
+                s+=tiempo/20+" nanosegundos";
+            }
         }
-
-        long TInicio, TFin, tiempo;           //Para determinar el tiempo
-        TInicio = System.currentTimeMillis(); //de ejecución
-        for (String carta: mapa.keySet()){
-            s = s + "\n Nombre: "+carta +", Tipo: "+mapa.get(carta);
-        }
-        TFin = System.currentTimeMillis();
-        tiempo = TFin - TInicio;
-        s+="\nTiempo de corrida: "+tiempo;
 
         return s;
     }
@@ -70,10 +77,9 @@ public class Controller {
      * @param mapa del que se quiere saber los objetos
      * @return
      */
-    public static String printMapaOrdenado(Map<String,String> mapa){
+    public static String printMapaOrdenado(Map<String,String> mapa,boolean imprimirMapa){
         String s = "";  // String to be returned
-        long TInicio, TFin, tiempo;           //Para determinar el tiempo
-        TInicio = System.currentTimeMillis(); //de ejecución
+
         // Logic to compare two entries
         Comparator<Map.Entry> compareByKeyType = new Comparator<Map.Entry>() {
             @Override
@@ -89,18 +95,31 @@ public class Controller {
         if (mapa.isEmpty()){
             s="\nCollecion vacia";
         } else {
-            s="\nCartas en la coleccion";
+            if(imprimirMapa){
+                s="\nCartas en la coleccion";
+                for (Map.Entry entry:
+                        sortedEntries) {
+                    s = s + "\n Nombre: "+entry.getKey() +", Tipo: "+ entry.getValue();
+                }
+            } else {
+                s="\nTiempo de corrida promedio: ";
+                long tiempo=0;
+                for (int i=0;i<20;i++){
+                    long t1 = System.nanoTime();
+                    for (Map.Entry entry:
+                            sortedEntries) {
+                        entry.getKey();
+                        entry.getValue();
+                    }
+                    tiempo+=System.nanoTime()-t1;
+                }
+                s+=tiempo/20+" nanosegundos";
+            }
+
         }
         // Iterate and append to the entry
-        for (Map.Entry entry:
-             sortedEntries) {
-            s = s + "\n Nombre: "+entry.getKey() +", Tipo: "+ entry.getValue();
-        }
 
 
-        TFin = System.currentTimeMillis();
-        tiempo = TFin - TInicio;
-        s+="\nTiempo de corrida "+tiempo;
 
         return s;
     }

@@ -64,26 +64,24 @@ public class Main {
 
             } else if (salir.equals("3")){
                 //mostrar cartas en coleccion
-                System.out.println(Controller.printMapa(coleccion));
+                System.out.println(Controller.printMapa(coleccion,true));
+                System.out.println(Controller.printMapa(coleccion,false));
 
 
             } else if (salir.equals("4")){
                 //mostrar cartas en coleccion ordenadas por tipo
-                System.out.println(Controller.printMapaOrdenado(coleccion));
+                System.out.println(Controller.printMapaOrdenado(coleccion,true));
+                System.out.println(Controller.printMapaOrdenado(coleccion,false));
 
             } else if (salir.equals("5")){
                 //mostrar todas las cartas existentes
-                System.out.println(Controller.printMapa(cartas));
-                for (int i = 0; i<5; i++){
-                    String t = Controller.printMapa(cartas);
-                    System.out.println(t.substring(t.length()-23,t.length()-1));
-                }
-
-
+                System.out.println(Controller.printMapa(cartas,true));
+                System.out.println(Controller.printMapa(cartas,false));
 
             } else if (salir.equals("6")){
                 //mostrar todas las cartas existentes por tipo
-                System.out.println(Controller.printMapaOrdenado(cartas));
+                System.out.println(Controller.printMapaOrdenado(cartas,true));
+                System.out.println(Controller.printMapaOrdenado(cartas,false));
 
             } else if (salir.equals("7")){
                 //salir
