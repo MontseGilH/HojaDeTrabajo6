@@ -1,5 +1,6 @@
 package com.ht06;
-import java.util.Map;
+import java.util.*;
+
 /**
  * Ultima modificacion: 9/03/2022
  * 
@@ -18,6 +19,7 @@ public class Controller {
      * @throws Exception
      */
     public static String obtenerTipo(String key,Map<String,String> map) throws Exception{
+        System.out.println("Obteniendo " +key);
         String carta =map.get(key);
         if (carta==null){
             throw new Exception("Error carta no esta en las existentes");
@@ -63,9 +65,33 @@ public class Controller {
      * @return
      */
     public static String printMapaOrdenado(Map<String,String> mapa){
-        String s;
+        String s = "";  // String to be returned
+        // Logic to compare two entries
+        Comparator<Map.Entry> compareByKeyType = new Comparator<Map.Entry>() {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
+                Comparable value1 = (Comparable) o1.getValue();
+                Comparable value2 = (Comparable) o2.getValue();
+                return value1.compareTo(value2);
+            }
+        };
+        Set entrySet = mapa.entrySet(); // Get the entry set for this map
+        ArrayList<Map.Entry> sortedEntries = new ArrayList(entrySet);   // Convert the entry set to an array
+        sortedEntries.sort(compareByKeyType);   // Sort the entries
+        if (mapa.isEmpty()){
+            s="\nCollecion vacia";
+        } else {
+            s="\nCartas en la coleccion";
+        }
+        // Itterate and append to the entry
+        for (Map.Entry entry:
+             sortedEntries) {
+            s = s + "\n Nombre: "+entry.getKey() +", Tipo: "+ entry.getValue();
+        }
 
-        return null;
+
+
+        return s;
     }
 
 }

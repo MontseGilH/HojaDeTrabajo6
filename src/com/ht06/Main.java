@@ -44,7 +44,7 @@ public class Main {
             if (salir.equals("1")){
                 //agregar carta a coleccion
                 System.out.println("\nIngrese el nombre de la carta a agregar");
-                String nombreC = scan.next();
+                String nombreC = scan.nextLine();
                 try{
                     coleccion=Controller.agregarCarta(nombreC,cartas,coleccion);
                     System.out.println("Carta agregada\n");
@@ -75,6 +75,7 @@ public class Main {
 
             } else if (salir.equals("6")){
                 //mostrar todas las cartas existentes por tipo
+                System.out.println(Controller.printMapaOrdenado(cartas));
 
             } else if (salir.equals("7")){
                 //salir
