@@ -97,13 +97,11 @@ public class Controller {
             s = s + "\n Nombre: "+entry.getKey() +", Tipo: "+ entry.getValue();
         }
 
-<<<<<<< HEAD
+
         TFin = System.currentTimeMillis();
         tiempo = TFin - TInicio;
         s+="\nTiempo de corrida "+tiempo;
 
-=======
->>>>>>> 7be2ce162b0b2661712ccc6130be3c612c16aa73
         return s;
     }
 
