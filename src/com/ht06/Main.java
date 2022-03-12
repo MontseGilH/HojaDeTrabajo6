@@ -39,7 +39,7 @@ public class Main {
         //seleccionar opcion a hacer
         String salir ="";
         while (!salir.equalsIgnoreCase("7")){
-            System.out.println("\nIngrese el numero de la opcion a realizar:\n1. Agregar carta a su coleccion\n2. Mostrar el tipo de una carta\n3. Mostrar su coleccion de cartas\n4. Mostrar su coleccion de cartas ordenadas por tipo\n5. Mostrar todas las cartas existentes\n6. Mostrar todas las cartas existentes ordenadas por tipo\n7. Salir\n");
+            System.out.println("\nIngrese el numero de la opcion a realizar:\n1. Agregar carta a su coleccion\n2. Mostrar el tipo de una carta\n3. Mostrar su coleccion de cartas\n4. Mostrar su coleccion de cartas ordenadas por tipo\n5. Mostrar todas las cartas existentes\n6. Mostrar todas las cartas existentes ordenadas por tipo\n7. Salir\n8. Analizar complejidad de tiempo HashMap\n");
             salir = scan.nextLine();
             if (salir.equals("1")){
                 //agregar carta a coleccion
@@ -86,6 +86,10 @@ public class Main {
             } else if (salir.equals("7")){
                 //salir
                 System.out.println("Saliendo del programa");
+
+            } else if (salir.equals("8")){
+                //analizar distintos archivos con distintas cantidades de valores y ver cuanto tiempo toman
+                System.out.println(Controller.cantTiempo());
             } else {
                 System.out.println("\nOpcion invalida");
             }

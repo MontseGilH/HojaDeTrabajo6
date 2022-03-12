@@ -40,4 +40,30 @@ public class FileManager {
         return hash;
     }
 
+    /**
+     * Lee un archivo y devuelve el mapa con el contenido del mismo con la cantidad de elementos especificado
+     * @param tipoHash implementacion del hash que se quiere
+     * @param archivo direccion del archivo
+     * @param cant
+     * @return mapa
+     * @throws Exception
+     */
+    public static Map<String, String> leerArchivoCant(String tipoHash, String archivo, int cant) throws Exception{
+        HashMapFactory<String, String> hashF = new HashMapFactory<String,String>();
+        Map<String, String> hash = hashF.getMap(tipoHash);
+        try{
+            File file = new File(archivo);
+            Scanner s = new Scanner(file);
+            for(int i = 0;i<cant;i++){
+                String linea = s.nextLine();
+                String[] items = linea.split("\\|");
+                hash.put(items[0],items[1]);
+            }
+            s.close();
+        } catch (Exception e){
+            throw new Exception("Error al leer el archivo");
+        }
+        return hash;
+    }
+
 }

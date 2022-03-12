@@ -55,7 +55,7 @@ public class Controller {
                     s = s + "\n Nombre: "+carta +", Tipo: "+mapa.get(carta);
                 }
             } else {
-                s="\nTiempo de corrida promedio: ";
+                //s="\nTiempo de corrida promedio: ";
                 long tiempo=0;
                 for (int i=0;i<20;i++){
                     long t1 = System.nanoTime();
@@ -64,7 +64,7 @@ public class Controller {
                     }
                     tiempo+=System.nanoTime()-t1;
                 }
-                s+=tiempo/20+" nanosegundos";
+                s=tiempo/20+" ";
             }
         }
 
@@ -120,6 +120,37 @@ public class Controller {
         // Iterate and append to the entry
 
 
+
+        return s;
+    }
+
+    /**
+     * Regresa un string listo para imprimir con el tiempo que toda obtener cierta cantidad de valores
+     * Metodo para luego analizar la complejidad de tiempo del HashMap
+     * @return
+     */
+    public static String cantTiempo(){
+        String s = "\nCant. \tTiempo";
+        //estabilizar el tiempo
+        for (int i = 1; i<11;i++){
+            try{
+                Map<String, String> valores = FileManager.leerArchivoCant("HM","cards_desc.txt",10);
+                Controller.printMapa(valores,false);
+            } catch (Exception e){
+            }
+        }
+
+        //valores reales a imprimir
+        int[] cants = {10,50,100,500,1000,1500,2000,4000,6000,8500};
+        for (int i:cants){
+            try{
+                Map<String, String> valores = FileManager.leerArchivoCant("HM","cards_desc.txt",i);
+                s+= "\n"+valores.size()+"\t"+ Controller.printMapa(valores,false);
+            } catch (Exception e){
+                s = "Error "+e.getMessage();
+            }
+
+        }
 
         return s;
     }
