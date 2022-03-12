@@ -55,7 +55,7 @@ public class Controller {
                     s = s + "\n Nombre: "+carta +", Tipo: "+mapa.get(carta);
                 }
             } else {
-                //s="\nTiempo de corrida promedio: ";
+                s="\nTiempo de corrida promedio: ";
                 long tiempo=0;
                 for (int i=0;i<20;i++){
                     long t1 = System.nanoTime();
@@ -67,7 +67,6 @@ public class Controller {
                 s=tiempo/20+" ";
             }
         }
-
         return s;
     }
 
@@ -117,9 +116,6 @@ public class Controller {
             }
 
         }
-        // Iterate and append to the entry
-
-
 
         return s;
     }
@@ -134,8 +130,8 @@ public class Controller {
         //estabilizar el tiempo
         for (int i = 1; i<11;i++){
             try{
-                Map<String, String> valores = FileManager.leerArchivoCant("HM","cards_desc.txt",10);
-                Controller.printMapa(valores,false);
+                Map<String, String> valores = FileManager.leerArchivoCant("HM","cards_desc.txt",i);
+                Controller.printTiempo(valores);
             } catch (Exception e){
             }
         }
@@ -145,13 +141,38 @@ public class Controller {
         for (int i:cants){
             try{
                 Map<String, String> valores = FileManager.leerArchivoCant("HM","cards_desc.txt",i);
-                s+= "\n"+valores.size()+"\t"+ Controller.printMapa(valores,false);
+                s+= "\n"+valores.size()+"\t"+ Controller.printTiempo(valores);
             } catch (Exception e){
                 s = "Error "+e.getMessage();
             }
 
         }
 
+        return s;
+    }
+
+    /**
+     * Regresa un string con el tiempo que toma encontrar el ultimo elemento
+     * @param mapa del que se quiere saber el tiempo
+     * @return
+     */
+    public static String printTiempo(Map<String,String> mapa){
+        String s="";
+        if (mapa.isEmpty()){
+            s="\nCollecion vacia";
+        } else {
+            String ultimoE="";
+            for (String carta: mapa.keySet()){
+                ultimoE = carta;
+            }
+            long tiempo=0;
+            for (int i=0;i<20;i++){
+                long t1 = System.nanoTime();
+                mapa.get(ultimoE);
+                tiempo+=System.nanoTime()-t1;
+                s=tiempo/20+" ";
+            }
+        }
         return s;
     }
 
