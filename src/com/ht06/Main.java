@@ -89,7 +89,10 @@ public class Main {
 
             } else if (salir.equals("8")){
                 //analizar distintos archivos con distintas cantidades de valores y ver cuanto tiempo toman
+                System.out.println("Tiempos para calcular complejidad de tiempo de HashMap");
                 System.out.println(Controller.cantTiempo());
+                System.out.println("Tiempos para calcular complejidad de tiempo para imprimir todos los valores de HashMap");
+                System.out.println(Controller.cantTiempoHash());
             } else {
                 System.out.println("\nOpcion invalida");
             }

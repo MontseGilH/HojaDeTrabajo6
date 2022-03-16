@@ -152,6 +152,37 @@ public class Controller {
     }
 
     /**
+     * Regresa un string listo para imprimir con el tiempo que toda obtener cierta cantidad de valores
+     * Metodo para luego analizar la complejidad de tiempo del HashMap
+     * @return
+     */
+    public static String cantTiempoHash(){
+        String s = "\nCant. \tTiempo";
+        //estabilizar el tiempo
+        for (int i = 1; i<11;i++){
+            try{
+                Map<String, String> valores = FileManager.leerArchivoCant("HM","cards_desc.txt",10);
+                Controller.printMapa(valores,false);
+            } catch (Exception e){
+            }
+        }
+
+        //valores reales a imprimir
+        int[] cants = {10,50,100,500,1000,1500,2000,4000,6000,8500};
+        for (int i:cants){
+            try{
+                Map<String, String> valores = FileManager.leerArchivoCant("HM","cards_desc.txt",i);
+                s+= "\n"+valores.size()+"\t"+ Controller.printMapa(valores,false);
+            } catch (Exception e){
+                s = "Error "+e.getMessage();
+            }
+
+        }
+
+        return s;
+    }
+
+    /**
      * Regresa un string con el tiempo que toma encontrar el ultimo elemento
      * @param mapa del que se quiere saber el tiempo
      * @return
